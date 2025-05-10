@@ -1,0 +1,40 @@
+.dialog-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1976d2;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dialog-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+
+  .dialog-message {
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: 500;
+  }
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.cancel-button {
+  font-weight: 600;
+  color: #1976d2;
+}
+
+.confirm-button {
+  font-weight: 600;
+}

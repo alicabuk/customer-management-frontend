@@ -1,0 +1,13 @@
+<h1 mat-dialog-title class="dialog-title">Silme Onayı</h1>
+
+<div mat-dialog-content class="dialog-content">
+  <mat-icon class="warning-icon">warning</mat-icon>
+  <p class="dialog-message">
+    <strong>{{ data?.message }}</strong>
+  </p>
+</div>
+
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="onCancel()" class="cancel-button">İptal</button>
+  <button mat-raised-button color="warn" (click)="onConfirm()" class="confirm-button">Sil</button>
+</div>

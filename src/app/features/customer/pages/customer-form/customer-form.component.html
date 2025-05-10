@@ -1,0 +1,123 @@
+<h2 mat-dialog-title>{{ dialogTitle }}</h2>
+
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <div class="form-container">
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Ad</mat-label>
+          <input
+            matInput
+            formControlName="first_name"
+            placeholder="Müşteri adı"
+            required
+          />
+          <mat-error
+            *ngIf="customerForm.get('first_name')?.hasError('required')"
+          >
+            Ad alanı zorunludur
+          </mat-error>
+          <mat-error
+            *ngIf="customerForm.get('first_name')?.hasError('maxlength')"
+          >
+            Ad en fazla 50 karakter olmalıdır
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Soyad</mat-label>
+          <input
+            matInput
+            formControlName="last_name"
+            placeholder="Müşteri soyadı"
+            required
+          />
+          <mat-error
+            *ngIf="customerForm.get('last_name')?.hasError('required')"
+          >
+            Soyad alanı zorunludur
+          </mat-error>
+          <mat-error
+            *ngIf="customerForm.get('last_name')?.hasError('maxlength')"
+          >
+            Soyad en fazla 50 karakter olmalıdır
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>TC Kimlik No</mat-label>
+          <input
+            matInput
+            formControlName="national_id"
+            placeholder="11 haneli TC kimlik numarası"
+            required
+            maxlength="11"
+          />
+          <mat-error
+            *ngIf="customerForm.get('national_id')?.hasError('required')"
+          >
+            TC Kimlik No zorunludur
+          </mat-error>
+          <mat-error
+            *ngIf="customerForm.get('national_id')?.hasError('pattern')"
+          >
+            TC Kimlik No 11 haneli rakamlardan oluşmalıdır
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Kayıt Tarihi</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="registration_date"
+            required
+          />
+          <mat-hint>GG/AA/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error
+            *ngIf="customerForm.get('registration_date')?.hasError('required')"
+          >
+            Kayıt tarihi zorunludur
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button
+      mat-button
+      type="button"
+      [disabled]="isLoading"
+      (click)="onCancel()"
+    >
+      İptal
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="isLoading"
+    >
+      <mat-spinner
+        diameter="20"
+        *ngIf="isLoading"
+        class="spinner"
+      ></mat-spinner>
+      <span *ngIf="!isLoading">{{
+        data.mode === "add" ? "Ekle" : "Güncelle"
+      }}</span>
+    </button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,117 @@
+<div class="container">
+  <div class="header">
+    <div class="title-section">
+      <h1>Müşteri Listesi</h1>
+    </div>
+    <div class="actions-section">
+      <button mat-raised-button color="primary" (click)="openAddDialog()">
+        <mat-icon>add</mat-icon>
+        Yeni Müşteri Ekle
+      </button>
+    </div>
+  </div>
+
+  <mat-card>
+    <mat-card-content>
+      <div class="filter-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Filtre</mat-label>
+          <input
+            matInput
+            (keyup)="applyFilter($event)"
+            placeholder="Aramak istediğiniz isim yada soyismi girin"
+          />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="mat-elevation-z0">
+        <div *ngIf="isLoading" class="loading-container">
+          <mat-spinner diameter="40"></mat-spinner>
+        </div>
+
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          matSort
+          class="full-width-table"
+          *ngIf="!isLoading"
+        >
+          <ng-container matColumnDef="first_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Ad</th>
+            <td mat-cell *matCellDef="let customer">
+              {{ customer.first_name }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="last_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Soyad</th>
+            <td mat-cell *matCellDef="let customer">
+              {{ customer.last_name }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="national_id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              TC Kimlik No
+            </th>
+            <td mat-cell *matCellDef="let customer">
+              {{ customer.national_id }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="registration_date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Kayıt Tarihi
+            </th>
+            <td mat-cell *matCellDef="let customer">
+              {{ customer.registration_date | date : "dd.MM.yyyy" }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>İşlemler</th>
+
+            <td mat-cell *matCellDef="let customer">
+              <div class="action-buttons">
+                <button
+                  mat-icon-button
+                  color="primary"
+                  (click)="openEditDialog(customer)"
+                  matTooltip="Düzenle"
+                >
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  color="warn"
+                  (click)="openDeleteDialog(customer)"
+                  matTooltip="Sil"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="5">
+              <div class="no-results">
+                <mat-icon>search_off</mat-icon>
+                <span>Sonuç bulunamadı</span>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          showFirstLastButtons
+        ></mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
