@@ -1,27 +1,41 @@
-# CurrentDirectory
+# Customer Management Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.19.
+This project is a web application that allows users to manage customer information, log in, and change their passwords. It is developed using Angular 18.2.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Login:** Default user credentials for admin login.
+- **Customer Management:** Features to list, add, update, and delete customers.
+- **Password Change:** Allows users to change their current passwords.
+- **Auth Guard:** Ensures that only logged-in users can access certain pages.
+- **Responsive Layout:** A user-friendly and modern design.
 
-## Code scaffolding
+## Project Requirements
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Node.js** 22.4 
+- **Angular CLI** 18.2
+- **npm** - Comes with Node.js.
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Setup Instructions
 
-## Running unit tests
+### 1. Install Dependencies
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Install all necessary dependencies by running the following command:
 
-## Running end-to-end tests
+```bash
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 2. Start the Angular Project
 
-## Further help
+```bash
+ng serve
+```
+### 3. Default User Credentials
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+Username: admin
+Password: 123456
+```
