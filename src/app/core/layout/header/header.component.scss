@@ -1,0 +1,24 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #1976d2;
+  color: white;
+  .header-title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .user-menu {
+    display: flex;
+    align-items: center;
+
+    mat-icon {
+      margin-right: 4px;
+    }
+  }
+}
